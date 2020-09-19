@@ -5,20 +5,37 @@ import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, updateCount } from "../redux/actions";
 
 function Counter() {
+    // Retrieve Global States
     const counter = useSelector(state => state.counter);
     const count = useSelector(state => state.count);
+    // Error for future checking
     const [error, setError] = useState(false);
+    // dispatch for future state change
     const dispatch = useDispatch();
 
+    /**
+     * handleChange()
+     * Purpose: 
+     *      handle change of input bar for counter state
+     * Paramters:
+     *      event - event of the change
+     * return:
+     *      dispatch to update count state or setError
+     */
     const handleChange = (event) => {
+        // Check if input is a number, below or equal to 100, and greater than 0
         if (!isNaN(event.target.value) && event.target.value <= 100 && event.target.value >= 0) {
+            // Remove Error
             setError(false);
+            // Return dispatch to change count state
             return dispatch(updateCount(parseInt(event.target.value)));
         }
+        // Set Error To True
         setError(true);
+        //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Be Between 0 and 100", "color:orange;");
-    }
+    }; // End handlechange()
 
     return (
         <Container style={{minHeight: "100vh", textAlign: "center", background: "skyblue"}} fluid>
