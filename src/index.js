@@ -16,11 +16,9 @@ const appStore = createStore(
 
 // Render Application 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={appStore}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={appStore}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,9 +1,12 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 class HomePage extends React.Component {
     render() {
         return (
-            <h1>Main Page</h1>
+            <Container>
+                <h1>Main Page</h1>
+            </Container>
         )
     }
 }
