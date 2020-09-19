@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./counter.css";
 import { Form, Col, Row, Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement, updateCount } from "../redux/actions";
+import { increment, decrement, updateCounter } from "../redux/actions";
 
 function Counter() {
     // Retrieve Global States
@@ -24,14 +24,16 @@ function Counter() {
      */
     const handleChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
-        if (!isNaN(event.target.value) && event.target.value <= 100 && event.target.value >= 0) {
+        if (!isNaN(parseInt(event.target.value)) && event.target.value <= 100 && event.target.value >= 0) {
             // Remove Error
             setError(false);
             // Return dispatch to change count state
-            return dispatch(updateCount(parseInt(event.target.value)));
+            return dispatch(updateCounter(parseInt(event.target.value)));
         }
         // Set Error To True
         setError(true);
+        // Change Count Back To Default Of 1
+        dispatch(updateCounter(1));
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Be Between 0 and 100", "color:orange;");
@@ -66,10 +68,10 @@ function Counter() {
                         </Form.Row>
                         <Form.Row>
                             <Col>
-                                <Button variant={counter===1?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(1))}>1</Button>
-                                <Button variant={counter===5?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(5))}>5</Button>
-                                <Button variant={counter===10?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(10))}>10</Button>
-                                <Button variant={counter===100?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(100))}>100</Button>
+                                <Button variant={counter===1?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCounter(1))}>1</Button>
+                                <Button variant={counter===5?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCounter(5))}>5</Button>
+                                <Button variant={counter===10?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCounter(10))}>10</Button>
+                                <Button variant={counter===100?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCounter(100))}>100</Button>
                             </Col>
                         </Form.Row>
                     </Form>
