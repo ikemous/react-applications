@@ -4,7 +4,7 @@ import { Form, Col, Row, Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, updateCounter } from "../redux/actions";
 
-function Counter() {
+function CounterPage() {
     // Retrieve Global States
     const counter = useSelector(state => state.counter);
     const count = useSelector(state => state.count);
@@ -81,4 +81,4 @@ function Counter() {
     );
 };
 
-export default Counter;
+export default CounterPage;
