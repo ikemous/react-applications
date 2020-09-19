@@ -1,5 +1,6 @@
 .inline-item {
     display: inline;
+    vertical-align: unset!important;
 }
 
 .counterButton {
