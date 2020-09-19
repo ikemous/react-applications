@@ -2,6 +2,7 @@ import React from 'react';
 import CewlNavBar from "./components/CewlNavBar";
 import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
+import TimerPage from "./pages/TimerPage";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 
@@ -10,8 +11,9 @@ function App() {
     <Router>
       <CewlNavBar />
       <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/counter" component={CounterPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/counter" component={CounterPage} />
+        <Route exact path="/timer" component={TimerPage} />
       </Switch>
     </Router>
   );
