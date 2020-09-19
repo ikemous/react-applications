@@ -58,8 +58,8 @@ function CounterPage() {
                                 md={{ span: 6, offset: 3 }}
                             >  
                                 <Form.Group>
-                                    <Form.Label>Enter Custom Count Or Use Quick Change Buttons</Form.Label>
-                                    <Form.Control isInvalid={error} placeholder="Custom Count" onChange={handleChange} />
+                                    <Form.Label htmlFor="count">Enter Custom Count Or Use Quick Change Buttons</Form.Label>
+                                    <Form.Control id="count" isInvalid={error} placeholder="Custom Count" onChange={handleChange} />
                                     <Form.Control.Feedback type="invalid">
                                         Number Must Be Between 0 And 100
                                     </Form.Control.Feedback>
