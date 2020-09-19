@@ -5,7 +5,7 @@
  *      state - current count state, default is 0
  *      action - object containing a type and payload
  * return: 
- *      state - count after action
+ *      state - count after action or current state
  */
 export const countReducer = (state = 0, action) => {
     // Check action Type
@@ -29,7 +29,7 @@ export const countReducer = (state = 0, action) => {
  *      state - counter for increment/decrement, default is 1
  *      action - object containing a type and payload
  * return: 
- *      state - updated counter or current state 
+ *      state - updated counter or return current state 
  */
 export const counterReducer = (state = 1, action) => {
     // Check Action

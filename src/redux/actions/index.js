@@ -36,8 +36,8 @@ export const decrement = (number) => {
  * Parameters:
  *      number - number to update counter state by
  * return: 
- *      type - action type of incremeny
- *       payload - nuber to increment the state by
+ *      type - action type of increment
+ *       payload - number to increment the state by
  */
 export const updateCounter = (number) => {
     return {
@@ -45,3 +45,19 @@ export const updateCounter = (number) => {
         payload: number
     };
 }; // End updateCounter()
+
+/**
+ * updateTimer()
+ * Purpose: to Tell The Reducer To Update timerItem with parameter amount
+ * Parameters:
+ *      number - number to update timer state by
+ * return: 
+ *       type - action type of increment
+ *       payload - number to update the timer state by
+ */
+export const updateTimer = (time) => {
+    return {
+        type: 'UPDATE',
+        payload: time
+    };
+}; // End updateTimer()
