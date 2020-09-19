@@ -1,0 +1,17 @@
+.inline-item {
+    display: inline;
+}
+
+.counterButton {
+    margin: 2px;
+}
+
+.counter { 
+    height: 100%;
+    width: 10vh;
+    font-size: 2rem;
+    text-align: center;
+    background: none;
+    border-color: none;
+    border: none;
+}
