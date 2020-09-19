@@ -27,9 +27,9 @@ function Counter() {
                 <div style={{width: "100%"}}>
                     <Row style={{paddingBottom: "20vh"}}>
                         <Col>
-                            <Button variant="success" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(increment(count))}>+</Button>
-                            <input aria-label="counter" className="inline-item counter" style={counter === 0? {color: "black"}: counter > 0? {color: "green"}: {color: "red"}} value ={counter} disabled/>
-                            <Button variant="danger" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(decrement(count))}>-</Button>
+                            <Button variant="success" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(increment(counter))}>+</Button>
+                            <input aria-label="counter" className="inline-item counter" style={count === 0? {color: "black"}: count > 0? {color: "green"}: {color: "red"}} value ={count} disabled/>
+                            <Button variant="danger" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(decrement(counter))}>-</Button>
                         </Col>
                     </Row>
                     <Form onSubmit={(event) => event.preventDefault()}>
@@ -49,10 +49,10 @@ function Counter() {
                         </Form.Row>
                         <Form.Row>
                             <Col>
-                                <Button variant={count===1?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(1))}>1</Button>
-                                <Button variant={count===5?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(5))}>5</Button>
-                                <Button variant={count===10?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(10))}>10</Button>
-                                <Button variant={count===100?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(100))}>100</Button>
+                                <Button variant={counter===1?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(1))}>1</Button>
+                                <Button variant={counter===5?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(5))}>5</Button>
+                                <Button variant={counter===10?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(10))}>10</Button>
+                                <Button variant={counter===100?"success":"secondary"} className="counterButton" onClick={() => dispatch(updateCount(100))}>100</Button>
                             </Col>
                         </Form.Row>
                     </Form>

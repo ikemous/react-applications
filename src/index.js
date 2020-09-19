@@ -8,11 +8,13 @@ import allReducers from "./redux/reducers";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
+// Create React Redux Store
 const appStore = createStore(
   allReducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ); 
 
+// Render Application 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={appStore}>
