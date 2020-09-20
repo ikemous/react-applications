@@ -46,18 +46,32 @@ export const updateCounter = (number) => {
     };
 }; // End updateCounter()
 
-/**
- * updateTimer()
- * Purpose: to Tell The Reducer To Update timerItem with parameter amount
- * Parameters:
- *      number - number to update timer state by
- * return: 
- *       type - action type of increment
- *       payload - number to update the timer state by
- */
-export const updateTimer = (time) => {
+
+export const updateMinutes = (time) => {
     return {
-        type: 'UPDATE',
+        type: 'UPDATE_MINUTES',
         payload: time
+    };
+}; // End updateTimer()
+
+export const decreaseMinutes = () => {
+    return {
+        type: 'DECREASE_MINUTES',
+        payload: null
+    };
+}; // End updateTimer()
+
+
+export const updateSeconds = (time) => {
+    return {
+        type: 'UPDATE_SECONDS',
+        payload: time
+    };
+}; // End updateSeconds()
+
+export const decreaseSeconds = () => {
+    return {
+        type: 'DECREASE_SECONDS',
+        payload: null
     };
 }; // End updateTimer()

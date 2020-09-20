@@ -11,7 +11,10 @@ export const secondsReducer = (state = 0, action) => {
     // Check Action
     switch (action.type) {
         // Update seconds state
-        case 'UPDATE':
+        case 'DECREASE_SECONDS':
+            return state -= 1;
+        // Update seconds state
+        case 'UPDATE_SECONDS':
             return state = action.payload;
         // No action, return state
         default:
@@ -23,7 +26,7 @@ export const secondsReducer = (state = 0, action) => {
  * minutesReducer()
  * Purpose: Update minutes to be stored
  * Parameters:
- *      state - minutes, default is 1
+ *      state - minutes, default is 15
  *      action - object containing a type and payload
  * return: 
  *      state - updated minutes or return current state 
@@ -32,7 +35,9 @@ export const minutesReducer = (state = 15, action) => {
     // Check Action
     switch (action.type) {
         // Update counter state
-        case 'UPDATE':
+        case 'DECREASE_MINUTES':
+            return state -= 1;
+        case 'UPDATE_MINUTES':
             return state = action.payload;
         // No action, return state
         default:

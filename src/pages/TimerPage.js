@@ -1,11 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import "./timerPage.css";
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-// import { increment, decrement, updateCounter } from "../redux/actions";
+import { updateMinutes, decreaseMinutes, updateSeconds, decreaseSeconds } from "../redux/actions";
 
 function TimerPage() {
+    const [error, setError] = useState(false);
+    const minutes = useSelector(state => state.minutes);
+    const seconds = useSelector(state => state.seconds);
+    const dispatch = useDispatch();
 
+    const startTimer = (event) => {
+        event.preventDefault();
+    };
+
+    const handleMinuteChange = (event) => {
+        // Check if input is a number, below or equal to 100, and greater than 0
+        if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0) {
+            // Remove Error
+            setError(false);
+            // Return dispatch to change count state
+            return dispatch(updateMinutes(parseInt(event.target.value)));
+        }
+        // Set Error To True
+        setError(true);
+        // Change C Of 0
+        dispatch(updateMinutes(0));
+        //  Log Error
+        console.log("%c Invalid Number:", "color:red;");
+        console.log("%c Number Must Over 0", "color:orange;");
+    }; // End handlechange()
+
+    const handleSecondsChange = (event) => {
+        // Check if input is a number, below or equal to 100, and greater than 0
+        if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0 && event.target.value <= 60) {
+            // Remove Error
+            setError(false);
+            // Return dispatch to change count state
+            return dispatch(updateSeconds(parseInt(event.target.value)));
+        }
+        // Set Error To True
+        setError(true);
+        // Change C Of 0
+        dispatch(updateSeconds(0));
+        //  Log Error
+        console.log("%c Invalid Number:", "color:red;");
+        console.log("%c Number Must Over 0", "color:orange;");
+    }; // End handlechange()
+
+    const handleMinutesClick = (event) => {
+        event.preventDefault();
+        if(event.target.name === "add" && minutes >= 0) return dispatch(updateMinutes(minutes + 1));
+        else if(minutes > 0) return dispatch(updateMinutes(minutes - 1));
+        //  Log Error
+        console.log("%c Invalid Number:", "color:red;");
+        console.log("%c Number Must Over 0", "color:orange;");
+    }
+
+    const handleSecondsClick = (event) => {
+        event.preventDefault();
+        if(event.target.name === "add" && seconds < 60) return dispatch(updateSeconds(seconds + 1));
+        else if(event.target.name === "minus" && seconds > 0) return dispatch(updateSeconds(seconds - 1));
+        //  Log Error
+        console.log("%c Invalid Number:", "color:red;");
+        console.log("%c Number Must Over 0 and under 61", "color:orange;");
+    }
 
     return (
         <Container>
@@ -15,20 +74,24 @@ function TimerPage() {
                     <Form.Row style={{marginLeft: "0", marginRight: "0"}}>
                         <Col>                        
                             <Form.Group>
-                                <Form.Control placeholder="00" htmlFor="minutes" className="timer" />
-                                <Form.Label id="minutes">Minutes</Form.Label>
+                                <Button name="add" className="minuteButton" onClick={handleMinutesClick}></Button>
+                                <Form.Control value={minutes} onChange={handleMinuteChange} id="minutes" className="timer" />
+                                <Button className="minuteButton" onClick={handleMinutesClick} style={{ display: "block"}}></Button>
+                                <Form.Label name="minus" htmlFor="minutes">Minutes</Form.Label>
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Control placeholder="00" htmlFor="seconds" className="timer"/>
-                                <Form.Label id="seconds">Seconds</Form.Label>
+                                <Button name="add" className="minuteButton" onClick={handleSecondsClick}></Button>
+                                <Form.Control value={seconds} onChange={handleSecondsChange} id="seconds" className="timer" />
+                                <Button name="minus" className="minuteButton" onClick={handleSecondsClick} style={{display: "block"}}></Button>
+                                <Form.Label htmlFor="seconds">Seconds</Form.Label>
                             </Form.Group>
                         </Col>
                     </Form.Row>
                     <Form.Row>
                         <Form.Group>
-                            <Button>Start</Button>
+                            <Button onClick={startTimer}>Start</Button>
                         </Form.Group>
                     </Form.Row>
                 </Form>
