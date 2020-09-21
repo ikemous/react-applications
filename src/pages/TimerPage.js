@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./timerPage.css";
+import { BsArrowUpShort, BsArrowDownShort } from "react-icons/bs"
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateMinutes, decreaseMinutes, updateSeconds, decreaseSeconds } from "../redux/actions";
@@ -70,7 +71,7 @@ function TimerPage() {
 
     const handleSecondsClick = (event) => {
         event.preventDefault();
-        if(event.target.name === "add" && seconds < 60) return dispatch(updateSeconds(seconds + 1));
+        if(event.target.name === "add" && seconds < 59  ) return dispatch(updateSeconds(seconds + 1));
         else if(event.target.name === "minus" && seconds > 0) return dispatch(updateSeconds(seconds - 1));
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
@@ -83,19 +84,43 @@ function TimerPage() {
             <Row className="d-flex justify-content-center align-items-center text-center">
                 <Form>
                     <Form.Row style={{marginLeft: "0", marginRight: "0"}}>
-                        <Col>                        
+                        <Col xs={6}>
                             <Form.Group>
-                                <Button name="add" className="minuteButton" onClick={handleMinutesClick}></Button>
+                                <Button 
+                                    name="add" 
+                                    className="quickButton" 
+                                    onClick={handleMinutesClick}
+                                >
+                                    <i className="fas fa-arrow-up arrows"></i>
+                                </Button>
                                 <Form.Control value={minutes} onChange={handleMinuteChange} id="minutes" className="timer" />
-                                <Button className="minuteButton" onClick={handleMinutesClick} style={{ display: "block"}}></Button>
+                                <Button 
+                                    name="minus"
+                                    className="quickButton" 
+                                    onClick={handleMinutesClick}
+                                >
+                                    <i class="fas fa-arrow-down arrows"></i>
+                                </Button>
                                 <Form.Label name="minus" htmlFor="minutes">Minutes</Form.Label>
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={6}>
                             <Form.Group>
-                                <Button name="add" className="minuteButton" onClick={handleSecondsClick}></Button>
+                                <Button 
+                                    name="add" 
+                                    className="quickButton" 
+                                    onClick={handleSecondsClick}
+                                >
+                                    <i className="fas fa-arrow-up arrows"></i>
+                                </Button>
                                 <Form.Control value={seconds} onChange={handleSecondsChange} id="seconds" className="timer" />
-                                <Button name="minus" className="minuteButton" onClick={handleSecondsClick} style={{display: "block"}}></Button>
+                                <Button 
+                                    name="minus" 
+                                    className="quickButton" 
+                                    onClick={handleSecondsClick}
+                                >
+                                    <i class="fas fa-arrow-down arrows"></i>
+                                </Button>
                                 <Form.Label htmlFor="seconds">Seconds</Form.Label>
                             </Form.Group>
                         </Col>
@@ -103,6 +128,7 @@ function TimerPage() {
                     <Form.Row>
                         <Form.Group>
                             <Button 
+                            variant={started?"danger":"success"}
                                 onClick={
                                     () => started?setStarted(false):setStarted(true)
                                 }
