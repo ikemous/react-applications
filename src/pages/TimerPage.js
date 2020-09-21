@@ -12,8 +12,18 @@ function TimerPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
-    }, [started]);
+        let interval = null;
+        if(started)  {
+            interval = setInterval(() => {
+                if(seconds > 0) dispatch(decreaseSeconds());
+                else {
+                    dispatch(decreaseMinutes());
+                    dispatch(updateSeconds(59));
+                }
+            }, 1000);
+        }
+        return () => clearInterval(interval);
+    }, [started, minutes, seconds, dispatch]);
 
     const handleMinuteChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
@@ -92,7 +102,13 @@ function TimerPage() {
                     </Form.Row>
                     <Form.Row>
                         <Form.Group>
-                            <Button onClick={() => started===false?setStarted(true):setStarted(false)}>Start</Button>
+                            <Button 
+                                onClick={
+                                    () => started?setStarted(false):setStarted(true)
+                                }
+                            >
+                                {started?"STOP":"START"}
+                            </Button>
                         </Form.Group>
                     </Form.Row>
                 </Form>
