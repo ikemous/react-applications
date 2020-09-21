@@ -1,4 +1,4 @@
-export const cityReducer = (state, action) => {
+export const cityReducer = (state = "" , action) => {
     switch(action.type) {
         case "UPDATE_CITY":
             return state = action.payload
