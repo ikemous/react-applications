@@ -13,4 +13,5 @@ const allReducers = combineReducers({
     weatherResults: weatherResultsReducer
 });
 
+// Export all reducers
 export default allReducers;

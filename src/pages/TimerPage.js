@@ -5,27 +5,58 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateMinutes, decreaseMinutes, updateSeconds, decreaseSeconds } from "../redux/actions";
 
 function TimerPage() {
+    // Create State for this specific page
     const [error, setError] = useState(false);
     const [started, setStarted] = useState(false);
+    // Grab state from redux store
     const minutes = useSelector(state => state.minutes);
     const seconds = useSelector(state => state.seconds);
+    // use Dispatch for Redux state alterations
     const dispatch = useDispatch();
 
+     /**
+     * useEffect()
+     * Purpose: React useHook to allow the timer to start/stop
+     * Parameters:
+     *      NONE
+     * Dependencies:
+     *      started - Timer Started(true or false)
+     *      minutes - Amount of minutes starting with
+     *      seconds - Amount of seconds startiing with
+     *      dispatch - hook from react-redux to allow state change
+     * return: 
+     *      () - function used to clear the interval
+     */
     useEffect(() => {
+        // initialize interval variable
         let interval = null;
+        // Check if timer is started and if there is still time left
         if(started && seconds > 0 && minutes >= 0)  {
+            // Start Interval
             interval = setInterval(() => {
+                // Check if there are still seconds and reduce if true
                 if(seconds > 0) dispatch(decreaseSeconds());
                 else {
+                    // Reduce Minutes by 1 and reset seconds to 59
                     dispatch(decreaseMinutes());
                     dispatch(updateSeconds(59));
                 }
-            }, 1000);
+            }, 1000); //End Interval
         }
+        // Check if there is still time left, if so set started to false
         else if(seconds === 0 && minutes === 0) setStarted(false);
+        //Clear Interval
         return () => clearInterval(interval);
-    }, [started, minutes, seconds, dispatch]);
+    }, [started, minutes, seconds, dispatch]); // End useEffect()
 
+    /**
+     * handleMinuteChange()
+     * Purpose: Update the minutes state if valid input
+     * Parameters:
+     *      event - event of change
+     * return: 
+     *      dispatch - used to change the state of minutes
+     */
     const handleMinuteChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
         if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0) {
@@ -41,8 +72,16 @@ function TimerPage() {
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0", "color:orange;");
-    }; // End handlechange()
+    }; // End handleMinuteChange()
 
+    /**
+     * handleSecondsChange()
+     * Purpose: Update the seconds state if valid input
+     * Parameters:
+     *      event - event of change
+     * return: 
+     *      dispatch - used to change the state of seconds
+     */
     const handleSecondsChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
         if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0 && event.target.value <= 59) {
@@ -58,25 +97,47 @@ function TimerPage() {
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0", "color:orange;");
-    }; // End handlechange()
+    }; // End handleSecondsChange()
 
+    /**
+     * handleMinutesChange()
+     * Purpose: Update the minutes state depending on click
+     * Parameters:
+     *      event - event of change
+     * return: 
+     *      dispatch - used to change the state of minutes
+     */
     const handleMinutesClick = (event) => {
+        //Prevent page refresh default
         event.preventDefault();
+        // Check if the Add button was clicked and add a minutes
         if(event.target.name === "add" && minutes >= 0) return dispatch(updateMinutes(minutes + 1));
+        // Check if decrement would go below 0, if not decrease minute
         else if(minutes > 0) return dispatch(updateMinutes(minutes - 1));
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0", "color:orange;");
-    };
+    }; // End handleMinutesClick()
 
+    /**
+     * handleSecondsChange()
+     * Purpose: Update the seconds state depending on click
+     * Parameters:
+     *      event - event of change
+     * return: 
+     *      dispatch - used to change the state of seconds
+     */
     const handleSecondsClick = (event) => {
+        // Prevent Page refresh
         event.preventDefault();
+        //Check if button clicked is add and seconds is less than 60, if so add
         if(event.target.name === "add" && seconds < 59  ) return dispatch(updateSeconds(seconds + 1));
+        // Check if seconds is > 0, if is then minus 
         else if(event.target.name === "minus" && seconds > 0) return dispatch(updateSeconds(seconds - 1));
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0 and under 61", "color:orange;");
-    };
+    }; // End handleSecondsClick()
 
     return (
         <Container>
