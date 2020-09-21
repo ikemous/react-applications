@@ -1,16 +1,25 @@
 import React, { useEffect } from "react";
+import API from "../utils/API";
 import { Container, Image, Form, Row, Button } from "react-bootstrap";
-import { updateCity, updateWeatherResults } from "../redux/actions"
+import { updateSearch, updateWeatherResults } from "../redux/actions"
 import { useSelector, useDispatch } from "react-redux";
 import "./weatherPage.css";
 
 function WeatherPage() {
-    const city = useSelector(state => state.city);
+
+    const search = useSelector(state => state.search);
     const weatherResults = useSelector(state => state.weatherResults);
     const dispatch = useDispatch();
-    useEffect(() => {
 
+    useEffect(() => {
+        
     }, []);
+
+    const searchCity = () => {
+        API.getWeather(search)
+        .then(({data}) => dispatch(updateWeatherResults(data)))
+        .catch(error => console.log(error));
+    };
 
     return( 
         <Container>
@@ -22,8 +31,13 @@ function WeatherPage() {
                     <Form>
                         <Form.Group>
                             <Form.Label htmlFor="cityInput">Search Your City</Form.Label>
-                            <Form.Control id="cityInput" type="text" />
-                            <Button>Search</Button>
+                            <Form.Control 
+                                value={search}
+                                onChange={(event) => dispatch(updateSearch(event.target.value)) } 
+                                id="cityInput" 
+                                type="text"
+                            />
+                            <Button onClick={searchCity}>Search</Button>
                         </Form.Group>
                     </Form>
                 </div>

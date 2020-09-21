@@ -76,10 +76,10 @@ export const decreaseSeconds = () => {
     };
 }; // End updateTimer()
 
-export const updateCity = () => {
+export const updateSearch = (city) => {
     return {
-        type: 'UPDATE_CITY',
-        payload: null
+        type: 'UPDATE_SEARCH',
+        payload: city
     };
 }; // End updateSeconds()
 

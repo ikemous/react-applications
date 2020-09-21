@@ -1,6 +1,6 @@
 import { counterReducer, countReducer } from "./counterReducer";
 import { minutesReducer, secondsReducer } from "./timerReducer";
-import { cityReducer, weatherResultsReducer } from "./weatherReducer";
+import { searchReducer, weatherResultsReducer } from "./weatherReducer";
 import { combineReducers } from "redux";
 
 // Put All Reducers Into One Object
@@ -9,7 +9,7 @@ const allReducers = combineReducers({
     count: countReducer,
     minutes: minutesReducer,
     seconds: secondsReducer,
-    city: cityReducer,
+    search: searchReducer,
     weatherResults: weatherResultsReducer
 });
 

@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 hidden.js
+./src/hidden.js
 
 # dependencies
 /node_modules
