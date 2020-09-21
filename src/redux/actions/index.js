@@ -75,3 +75,17 @@ export const decreaseSeconds = () => {
         payload: null
     };
 }; // End updateTimer()
+
+export const updateCity = () => {
+    return {
+        type: 'UPDATE_CITY',
+        payload: null
+    };
+}; // End updateSeconds()
+
+export const updateWeatherResults = (results) => {
+    return {
+        type: 'UPDATE_WEATHER_RESULTS',
+        payload: results
+    };
+}; // End updateTimer()
