@@ -99,7 +99,7 @@ function TimerPage() {
                                     className="quickButton" 
                                     onClick={handleMinutesClick}
                                 >
-                                    <i class="fas fa-arrow-down arrows"></i>
+                                    <i className="fas fa-arrow-down arrows"></i>
                                 </Button>
                                 <Form.Label name="minus" htmlFor="minutes">Minutes</Form.Label>
                             </Form.Group>
@@ -119,7 +119,7 @@ function TimerPage() {
                                     className="quickButton" 
                                     onClick={handleSecondsClick}
                                 >
-                                    <i class="fas fa-arrow-down arrows"></i>
+                                    <i className="fas fa-arrow-down arrows"></i>
                                 </Button>
                                 <Form.Label htmlFor="seconds">Seconds</Form.Label>
                             </Form.Group>
