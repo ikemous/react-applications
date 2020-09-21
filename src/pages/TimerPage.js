@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./timerPage.css";
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
@@ -6,13 +6,14 @@ import { updateMinutes, decreaseMinutes, updateSeconds, decreaseSeconds } from "
 
 function TimerPage() {
     const [error, setError] = useState(false);
+    const [started, setStarted] = useState(false);
     const minutes = useSelector(state => state.minutes);
     const seconds = useSelector(state => state.seconds);
     const dispatch = useDispatch();
 
-    const startTimer = (event) => {
-        event.preventDefault();
-    };
+    useEffect(() => {
+        
+    }, [started]);
 
     const handleMinuteChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
@@ -33,7 +34,7 @@ function TimerPage() {
 
     const handleSecondsChange = (event) => {
         // Check if input is a number, below or equal to 100, and greater than 0
-        if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0 && event.target.value <= 60) {
+        if (!isNaN(parseInt(event.target.value)) && event.target.value >= 0 && event.target.value <= 59) {
             // Remove Error
             setError(false);
             // Return dispatch to change count state
@@ -55,7 +56,7 @@ function TimerPage() {
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0", "color:orange;");
-    }
+    };
 
     const handleSecondsClick = (event) => {
         event.preventDefault();
@@ -64,7 +65,7 @@ function TimerPage() {
         //  Log Error
         console.log("%c Invalid Number:", "color:red;");
         console.log("%c Number Must Over 0 and under 61", "color:orange;");
-    }
+    };
 
     return (
         <Container>
@@ -91,7 +92,7 @@ function TimerPage() {
                     </Form.Row>
                     <Form.Row>
                         <Form.Group>
-                            <Button onClick={startTimer}>Start</Button>
+                            <Button onClick={() => started===false?setStarted(true):setStarted(false)}>Start</Button>
                         </Form.Group>
                     </Form.Row>
                 </Form>
