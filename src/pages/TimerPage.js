@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./timerPage.css";
-import { BsArrowUpShort, BsArrowDownShort } from "react-icons/bs"
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateMinutes, decreaseMinutes, updateSeconds, decreaseSeconds } from "../redux/actions";
@@ -14,7 +13,7 @@ function TimerPage() {
 
     useEffect(() => {
         let interval = null;
-        if(started)  {
+        if(started && seconds > 0 && minutes >= 0)  {
             interval = setInterval(() => {
                 if(seconds > 0) dispatch(decreaseSeconds());
                 else {
@@ -23,6 +22,7 @@ function TimerPage() {
                 }
             }, 1000);
         }
+        else if(seconds === 0 && minutes === 0) setStarted(false);
         return () => clearInterval(interval);
     }, [started, minutes, seconds, dispatch]);
 
@@ -89,15 +89,26 @@ function TimerPage() {
                                 <Button 
                                     name="add" 
                                     className="quickButton" 
+                                    variant="success"
                                     onClick={handleMinutesClick}
+                                    disabled={started?true:false}
                                 >
                                     <i className="fas fa-arrow-up arrows"></i>
                                 </Button>
-                                <Form.Control value={minutes} onChange={handleMinuteChange} id="minutes" className="timer" />
+                                <Form.Control 
+                                    value={minutes} 
+                                    onChange={handleMinuteChange} 
+                                    id="minutes" 
+                                    className="timer" 
+                                    style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00 "}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
+                                    disabled={started?true:false}    
+                                />
                                 <Button 
                                     name="minus"
                                     className="quickButton" 
+                                    variant="danger"
                                     onClick={handleMinutesClick}
+                                    disabled={started?true:false}
                                 >
                                     <i className="fas fa-arrow-down arrows"></i>
                                 </Button>
@@ -108,16 +119,27 @@ function TimerPage() {
                             <Form.Group>
                                 <Button 
                                     name="add" 
-                                    className="quickButton" 
+                                    className="quickButton"
+                                    variant="success"
                                     onClick={handleSecondsClick}
+                                    disabled={started?true:false}
                                 >
                                     <i className="fas fa-arrow-up arrows"></i>
                                 </Button>
-                                <Form.Control value={seconds} onChange={handleSecondsChange} id="seconds" className="timer" />
+                                <Form.Control 
+                                    value={seconds} 
+                                    onChange={handleSecondsChange} 
+                                    id="seconds" 
+                                    className="timer"
+                                    style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00 "}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
+                                    disabled={started?true:false}
+                                />
                                 <Button 
                                     name="minus" 
-                                    className="quickButton" 
+                                    className="quickButton"
+                                    variant="danger"
                                     onClick={handleSecondsClick}
+                                    disabled={started?true:false}
                                 >
                                     <i className="fas fa-arrow-down arrows"></i>
                                 </Button>
@@ -126,12 +148,13 @@ function TimerPage() {
                         </Col>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group>
+                        <Form.Group style={{width: "100%"}}>
                             <Button 
-                            variant={started?"danger":"success"}
-                                onClick={
-                                    () => started?setStarted(false):setStarted(true)
-                                }
+                                style={{width: "75%"}}
+                                variant={started?"danger":"success"}
+                                    onClick={
+                                        () => started?setStarted(false):setStarted(true)
+                                    }
                             >
                                 {started?"STOP":"START"}
                             </Button>
