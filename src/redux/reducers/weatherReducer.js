@@ -28,7 +28,7 @@ export const searchReducer = (state = "" , action) => {
  * return: 
  *      state - updated weatherResults or return current state 
  */
-export const weatherResultsReducer = (state = {}, action) => {
+export const weatherResultsReducer = (state = null, action) => {
     // Check Action
     switch(action.type) {
         // Update Results
