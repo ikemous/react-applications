@@ -126,7 +126,6 @@ export const decreaseMinutes = (): object => {
 
 //#endregion timerActions
 
-
 //#region weatherActions
 
 /**
@@ -162,3 +161,21 @@ export const updateWeatherResults = (results: object) => {
 }; // End updateWeatherResults()
 
 //#endregion weatherActions
+
+//#region globalActions
+
+export const updateDate = (date: Date = new Date()):object => {
+    return {
+        type: "UPDATE_DATE",
+        payload: date
+    };
+};
+
+export const updatePath = (path: string = "/"):object => {
+    return {
+        type: "UPDATE_PATH",
+        payload: path
+    }
+};
+
+//#endregion globalActions

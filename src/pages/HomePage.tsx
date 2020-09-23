@@ -1,32 +1,31 @@
 import React from "react";
+import ShowMeTheDate from "../components/ShowMeTheDate";
+import { useSelector, useDispatch, RootStateOrAny, connect } from "react-redux";
+import { updateDate, updatePath } from "../utils/actions";
 
 type PageState = string;
 type DateState = {
     time: Date
 };
 
+
 class HomePage extends React.Component<{},DateState> {
 
-    tick() {
-        this.setState({
-            time: new Date()
-        });
-    };
-
-    componentWillMount() {
-        this.tick();
-    };
-
-    componentDidMount() {
-        setInterval(() => this.tick(), 1000);
-    };
-
-    render()
-    {
+    render()  {
         return(
-            <p>Current Date and Time {this.state.time.toLocaleTimeString()}</p>
+            <>
+                <ShowMeTheDate {...this.props} />
+            </>
         );
     }
 };
 
-export default HomePage;
+const mapStateToProps = (state: RootStateOrAny) => {
+    return state;
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+    return updateDate;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

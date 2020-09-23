@@ -3,30 +3,18 @@ interface PageState {
     date?: Date
 }
 
-interface DateAction {
+interface Action {
     type: string,
-    payload: Date
+    payload: any
 }
 
-interface PageAction {
-    type: string,
-    payload: string
-}
-
-export const dateReducer = (state: PageState = {path: "/", date: new Date()}, action:DateAction)=> {
+export const globalStateReducer = (state: PageState = {path: "/", date: new Date()}, action:Action)=> {
     switch(action.type) {
         case "UPDATE_DATE":
             return {...state, date: action.payload};
-        default:
-            return state;
-    };
-};
-
-export const pathReducer = (state: PageState = {path: "/", date: new Date()}, action:PageAction) => {
-    switch(action.type) {
-        case "UPDATE PATH":
+        case "UPDATE_PATH":
             return {...state, path: action.payload};
         default:
-            return state
+            return state;
     };
 };
