@@ -1,4 +1,5 @@
 import { passwordReducer } from "./passwordReducer";
+import { pathReducer, dateReducer } from "./pageReducer";
 import { weatherResultsReducer, weatherSearchReducer } from "./weatherReducer";
 import { minutesReducer, secondsReducer } from "./timerReducer";
 import { counterReducer, countReducer } from "./counterReducer";
@@ -11,7 +12,9 @@ const allReducers = combineReducers({
     seconds: secondsReducer,
     minutes: minutesReducer,
     search: weatherSearchReducer,
-    results: weatherResultsReducer
+    results: weatherResultsReducer,
+    path: pathReducer,
+    date: dateReducer
 });
 
 export default allReducers;
