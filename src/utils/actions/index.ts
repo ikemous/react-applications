@@ -1,3 +1,13 @@
+
+export const updatePassword = (password: string = ""):object => {
+    return {
+        type: "UPDATE_PASSWORD",
+        payload: password
+    };
+};
+
+//#region counterActions
+
 /**
  * increment()
  * Purpose: to tell the reducer to increment by parameter amount
@@ -7,10 +17,10 @@
  *      type - action type of increment
  *      payload - number to increment the state by
  */
-export const increment = (number) => {
+export const increment = (amount: number = 1): object => {
     return {
-        type: 'INCREMENT',
-        payload: number
+        type: "INCREMENT",
+        payload: amount
     };
 }; // End increment()
 
@@ -23,12 +33,32 @@ export const increment = (number) => {
  *      type - action type of decrement
  *      payload - number to decrement the state by
  */
-export const decrement = (number) => {
+export const decrement = (amount: number = 1) => {
     return {
-        type: 'DECREMENT',
-        payload: number
+        type: "DECREMENT",
+        payload: amount
     };
-}; // End decrement 
+}; // End decrement()
+
+/**
+ * updateCounter()
+ * Purpose: to Tell The Reducer To Update counter with parameter amount
+ * Parameters:
+ *      number - number to update counter state by
+ * return: 
+ *      type - action type of increment
+ *      payload - number to increment the state by
+ */
+export const updateCounter = (amount: number = 1) => {
+    return {
+        type: "UPDATE",
+        payload: amount
+    };
+}; // End updateCounter()
+
+//#endregion counterActions
+
+//#region timerActions
 
 /**
  * updateCounter()
@@ -39,10 +69,10 @@ export const decrement = (number) => {
  *      type - action type of increment
  *       payload - number to increment the state by
  */
-export const updateCounter = (number) => {
+export const updateSeconds = (time:number): object => {
     return {
-        type: 'UPDATE',
-        payload: number
+        type: "UPDATE_SECONDS",
+        payload: time
     };
 }; // End updateCounter()
 
@@ -55,44 +85,12 @@ export const updateCounter = (number) => {
  *      type - action type of increment
  *      payload - number to update the state by
  */
-export const updateMinutes = (time) => {
+export const updateMinutes = (time:number): object => {
     return {
-        type: 'UPDATE_MINUTES',
+        type: "UPDATE_MINUTES",
         payload: time
     };
 }; // End updateMinutes()
-
-/**
- * decreaseMinutes()
- * Purpose: to Tell The Reducer To decrease minutes
- * Parameters:
- *      NONE
- * return: 
- *      type - action type of increment
- *      payload - null
- */
-export const decreaseMinutes = () => {
-    return {
-        type: 'DECREASE_MINUTES',
-        payload: null
-    };
-}; // End updateTimer()
-
-/**
- * updateSeconds()
- * Purpose: to Tell The Reducer To Update seconds with parameter amount
- * Parameters:
- *      time - amount of seconds to update the state with
- * return: 
- *      type - action type of increment
- *      payload - number to update the state by
- */
-export const updateSeconds = (time) => {
-    return {
-        type: 'UPDATE_SECONDS',
-        payload: time
-    };
-}; // End updateSeconds()
 
 /**
  * decreaseSeconds()
@@ -103,12 +101,33 @@ export const updateSeconds = (time) => {
  *      type - action type of increment
  *      payload - null
  */
-export const decreaseSeconds = () => {
+export const decreaseSeconds = (): object => {
     return {
-        type: 'DECREASE_SECONDS',
-        payload: null
-    };
+        type: "DECREASE_SECONDS",
+        payload: 1
+    }
 }; // End decreaseSeconds()
+
+/**
+ * decreaseMinutes()
+ * Purpose: to Tell The Reducer To decrease minutes
+ * Parameters:
+ *      NONE
+ * return: 
+ *      type - action type of increment
+ *      payload - null
+ */
+export const decreaseMinutes = (): object => {
+    return {
+        type: "DECREASE_MINUTES",
+        payload: 1
+    }
+}; // End decreaseMinutes()
+
+//#endregion timerActions
+
+
+//#region weatherActions
 
 /**
  * updateSearch()
@@ -119,7 +138,7 @@ export const decreaseSeconds = () => {
  *      type - action type of increment
  *      payload - name of the city to update search with
  */
-export const updateSearch = (city) => {
+export const updateWeatherSearch = (city: string) => {
     return {
         type: 'UPDATE_SEARCH',
         payload: city
@@ -135,9 +154,11 @@ export const updateSearch = (city) => {
  *      type - action type of increment
  *      payload - results to update the state with
  */
-export const updateWeatherResults = (results) => {
+export const updateWeatherResults = (results: object) => {
     return {
         type: 'UPDATE_WEATHER_RESULTS',
         payload: results
     };
 }; // End updateWeatherResults()
+
+//#endregion weatherActions

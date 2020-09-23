@@ -22,7 +22,7 @@ function CewlNavBar() {
                 </Navbar.Collapse>
             </Navbar>
         </header>
-    )
+    );
 };
 
 export default CewlNavBar;

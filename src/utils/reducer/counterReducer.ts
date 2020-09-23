@@ -1,3 +1,17 @@
+// Type for Action variables in reducer 
+// functions
+type Action = {
+    type: string,
+    payload: number
+}
+
+// Type for counter variables
+type Counter = number;
+
+// Starting values
+const startingCount = 0;
+const startingCounter = 1;
+
 /**
  * countReducer()
  * Purpose: Increment or decrement 
@@ -7,19 +21,19 @@
  * return: 
  *      state - count after action or current state
  */
-export const countReducer = (state = 0, action) => {
+export const countReducer = (state: Counter = startingCount, action: Action) => {
     // Check action Type
-    switch(action.type) {
+    switch (action.type) {
         // Increment count state
-        case 'INCREMENT':
-            return state + action.payload;
+        case "INCREMENT":
+            return state + action.payload
         // decrement count state
-        case 'DECREMENT':
-            return state - action.payload;
+        case "DECREMENT":
+            return state - action.payload
         // no action, return current state
         default:
             return state;
-    };
+    }
 }; // End countReducer()
 
 /**
@@ -31,14 +45,14 @@ export const countReducer = (state = 0, action) => {
  * return: 
  *      state - updated counter or return current state 
  */
-export const counterReducer = (state = 1, action) => {
+export const counterReducer = (state: Counter = startingCounter, action: Action) => {
     // Check Action
     switch (action.type) {
         // Update counter state
-        case 'UPDATE':
+        case "UPDATE":
             return state = action.payload;
-        // No action, return state
+            // No action, return state
         default:
             return state;
-    };
+    }
 }; // End counterReducer()

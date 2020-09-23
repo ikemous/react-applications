@@ -1,24 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import allReducers from "./redux/reducers";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as serviceWorker from './serviceWorker';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import allReducers from "./utils/reducer"; 
 
-// Create React Redux Store
-const appStore = createStore(
-  allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-); 
 
-// Render Application 
+/* eslint-disable no-underscore-dangle */
+const store = createStore(allReducers,composeWithDevTools());
+/* eslint-enable */
+
 ReactDOM.render(
-  <Provider store={appStore}>
-    <App />
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

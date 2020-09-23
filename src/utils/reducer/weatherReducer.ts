@@ -1,3 +1,16 @@
+type SearchAction = {
+    type: string,
+    payload: string
+};
+
+type ResultsAction = {
+    type: string,
+    payload?: any,
+}
+
+type SearchState = string;
+type ResultsState = any;
+
 /**
  * searchReducer()
  * Purpose: Update search state
@@ -7,7 +20,7 @@
  * return: 
  *      state - updated searh or return current state 
  */
-export const searchReducer = (state = "" , action) => {
+export const weatherSearchReducer = (state:SearchState = "" , action:SearchAction) => {
     // Check action
     switch(action.type) {
         // Update Search
@@ -19,6 +32,7 @@ export const searchReducer = (state = "" , action) => {
     };
 }; // End searchReducer()
 
+
 /**
  * weatherResultsReducer()
  * Purpose: Update results from the weather search
@@ -28,7 +42,7 @@ export const searchReducer = (state = "" , action) => {
  * return: 
  *      state - updated weatherResults or return current state 
  */
-export const weatherResultsReducer = (state = null, action) => {
+export const weatherResultsReducer = (state:ResultsState = null, action:ResultsAction) => {
     // Check Action
     switch(action.type) {
         // Update Results
