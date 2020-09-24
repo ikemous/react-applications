@@ -17,9 +17,9 @@ function WeatherPage() {
     };
 
     return (
-        <Container>
-            <h1 className="text-center">Weather APP</h1>
+        <Container style={{minHeight: "calc(100vh - 56px)"}}>
             <Row className="d-flex justify-content-center align-items-center text-center">
+                <h1 className="text-center">Weather APP</h1>
                 <div>
                     <h2>Using Weather API</h2>
                     <Form>

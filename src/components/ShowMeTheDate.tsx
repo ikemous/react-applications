@@ -1,9 +1,16 @@
 import React from "react";
 
-class ShowMeTheDate extends React.Component {
+interface DateProps {
+    date: Date
+};
+
+class ShowMeTheDate extends React.Component<DateProps> {
+
     render(){
         return(
-            <p></p>
+            <>
+                {this.props.date?<p>{this.props.date.toDateString()} - {this.props.date.toLocaleTimeString()}</p>:<p>No Date Rendered</p>}
+            </>
         );
     };
 };
