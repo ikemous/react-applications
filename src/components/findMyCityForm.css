@@ -1,0 +1,13 @@
+.searchForm {
+    margin: auto;
+    width: 60%;
+}
+
+.weatherInfoCard {
+    margin: auto!important;
+    width: 60%;
+}
+
+.weatherSearchButton {
+    margin: 5px;
+}

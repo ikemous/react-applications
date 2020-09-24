@@ -29,16 +29,19 @@ function PrettyDecentWeatherCard() {
                             <Card.Title>{weatherResults.weather[0].main}</Card.Title>
                         </Card.ImgOverlay>
                     </Card>
-                    <Card border="primary" style={{margin: "5px"}}>
+                    <Card border="primary" className="weatherInfoCard" style={{margin: "5px"}}>
                         <Card.Header>{weatherResults.name}, {weatherResults.sys.country}</Card.Header>
                         <Card.Body>
-                        <Card.Title>{calculateF(weatherResults.main.temp)} °F</Card.Title>
-                        <Card.Text>
-                            High: {calculateF(weatherResults.main.temp_max)} °F
-                        </Card.Text>
-                        <Card.Text>
-                            Low: {calculateF(weatherResults.main.temp_min)} °F
-                        </Card.Text>
+                            <Card.Title>{calculateF(weatherResults.main.temp)} °F</Card.Title>
+                            <Card.Text className="text-left">
+                                High: {calculateF(weatherResults.main.temp_min)} °F
+                            </Card.Text>
+                            <Card.Text className="text-left">
+                                Low: {calculateF(weatherResults.main.temp_max)} °F
+                            </Card.Text>
+                            <Card.Text className="text-left">
+                                Wind Speed: {weatherResults.wind.speed} mph
+                            </Card.Text>
                         </Card.Body>
                     </Card>
                 </>
