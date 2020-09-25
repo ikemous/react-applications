@@ -45,7 +45,7 @@ class HomePage extends React.Component<Props> {
                             src={weatherImage}
                             alt="Weather Application Preview"
                         />
-                        <Carousel.Caption>
+                        <Carousel.Caption className="slideText">
                         <h3>Weather Application</h3>
                         <p>Application To Search And View Current Weather</p>
                         </Carousel.Caption>
@@ -56,7 +56,7 @@ class HomePage extends React.Component<Props> {
                             src={counterImage}
                             alt="Counter Application Preview"
                         />
-                        <Carousel.Caption>
+                        <Carousel.Caption className="slideText">
                         <h3>Counter Application</h3>
                         <p>Application Count Up Or Down On Click</p>
                         </Carousel.Caption>
@@ -67,7 +67,7 @@ class HomePage extends React.Component<Props> {
                             src={timerImage}
                             alt="Timer Application Preview"
                         />
-                        <Carousel.Caption>
+                        <Carousel.Caption className="slideText">
                         <h3>Timer Application</h3>
                         <p>Application To Count Down On Starting Point</p>
                         </Carousel.Caption>

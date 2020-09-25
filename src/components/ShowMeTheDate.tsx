@@ -8,9 +8,9 @@ class ShowMeTheDate extends React.Component<DateProps> {
 
     render(){
         return(
-            <>
-                {this.props.date?<p>{this.props.date.toDateString()} - {this.props.date.toLocaleTimeString()}</p>:<p>No Date Rendered</p>}
-            </>
+            <h2 className="text-center">
+                {this.props.date?`${this.props.date.toDateString()} - ${this.props.date.toLocaleTimeString()}`:"No Date Rendered"}
+            </h2>
         );
     };
 };
