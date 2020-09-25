@@ -3,6 +3,7 @@ import "./counterPage.css";
 import { Form, Col, Row, Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
 import { increment, decrement, updateCounter } from "../utils/actions";
+import { Helmet } from "react-helmet";
 
 function CounterPage() {
 
@@ -43,7 +44,15 @@ function CounterPage() {
     }; // End handlechange()
 
     return (
-        <Container style={{minHeight: "calc(100vh - 56px)", textAlign: "center", background: "#376dae"}} fluid>
+        <>
+            <Helmet>
+                <title>Reactications - Counter</title>
+                <meta
+                    name="description"
+                    content="Page to Allow user Count up or down by clicking buttons"
+                />
+            </Helmet>
+            <Container style={{minHeight: "calc(100vh - 56px)", textAlign: "center", background: "#376dae"}} fluid>
                 <div className="d-flex justify-content-center align-items-center" style={{minHeight: "calc(100vh - 56px)"}}>
                     <div style={{width: "100%"}}>
                         <h1 style={{margin: "0", padding: "20px"}}>Counter App</h1>
@@ -81,6 +90,7 @@ function CounterPage() {
                 </div>
             </div>
         </Container>
+        </>
     );
 };
 
