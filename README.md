@@ -1,44 +1,53 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 style="text-center;">Reactications</h1>
 
-## Available Scripts
+## Table Of Contents
+1. [Description](##Description)
+1. [How To Use](##Use)
+1. [Software Used](##Software)
+1. [Technologies Used](##Technologies)
+1. [Creator](##Creator)
+1. [Socials](##Socials)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+    This application was made to use several different styles for react. Application was deployed on AWS 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    and The Use Of Functional Components and Classes were done on purpose. Other than that i'm just a terrible 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    programmer 😂😂😂😂 Enjoy Using!
 
-### `npm test`
+[Deployed Application](https://master.dm4of32gdirop.amplifyapp.com)
+[Repository](https://github.com/ikemous/react-applications/tree/master)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Software
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Robo3T](https://robomongo.org/)
+- [Git Bash](https://gitforwindows.org/)
+- [AWS](https://aws.amazon.com/?nc2=h_lg)
 
-### `npm run build`
+## Technologies
+[![Using HTML](https://img.shields.io/badge/Using-HTML-orange)](https://www.w3schools.com/html/)
+[![Using CSS](https://img.shields.io/badge/Using-CSS-blue)](https://www.w3schools.com/css/)
+[![Using Javascript](https://img.shields.io/badge/Using-Javascript-yellow)](https://www.javascript.com/)
+[![Using Node](https://img.shields.io/badge/Using-Node-brightgreen)](https://nodejs.org/en/)
+[![Using React](https://img.shields.io/badge/Using-React-informational)](https://reactjs.org/)
+[![Using Typescript](https://img.shields.io/badge/Using-Typescript-007acc)](https://reactjs.org/)
+[![Using Express](https://img.shields.io/badge/Using-Express-lightgreen)](https://www.npmjs.com/package/express)
+[![Using MongoDB](https://img.shields.io/badge/Using-MongoDB-4DB33D)](https://www.mongodb.com/)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Use
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<img src="./example.gif" alt="gif to show how application works"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Creator
 
-### `npm run eject`
+<div style="display: inline; text-align: center">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<div> 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[<h2>Ikemous</h2>](https://github.com/ikemous)</br>
+<image src="https://github-readme-stats.codestackr.vercel.app/api?username=ikemous&show_icons=true&theme=radical" /><br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+</div>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+</div>
