@@ -44,9 +44,9 @@ function CounterPage() {
 
     return (
         <Container style={{minHeight: "calc(100vh - 56px)", textAlign: "center", background: "skyblue"}} fluid>
-            <h1 style={{margin: "0", padding: "20px"}}>Counter App</h1>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center align-items-center" style={{minHeight: "calc(100vh - 56px)"}}>
                     <div style={{width: "100%"}}>
+                        <h1 style={{margin: "0", padding: "20px"}}>Counter App</h1>
                         <Row style={{paddingBottom: "20vh"}}>
                             <Col>
                                 <Button variant="success" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(increment(counter))}>+</Button>
