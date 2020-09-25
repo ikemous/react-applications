@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 import { 
     updateMinutes, 
-    updateSeconds, 
+    updateSeconds,
+    updateStarted,
     decreaseSeconds, 
     decreaseMinutes 
 } from "../utils/actions";
@@ -12,15 +13,10 @@ import "./timerPage.css";
 
 function TimerPage() {
 
-    // const [error, setError] = useState(false);
-    const [started, setStarted] = useState(false);
-    // const seconds = useSelector((state: RootStateOrAny) => state.seconds);
-    // const minutes = useSelector((state: RootStateOrAny) => state.minutes);
-    const { minutes, seconds } = useSelector((state: RootStateOrAny) => state.timerState);
-
+    const { minutes, seconds, started } = useSelector((state: RootStateOrAny) => state.timerState);
     const dispatch = useDispatch();
 
-        /**
+    /**
      * useEffect()
      * Purpose: React useHook to allow the timer to start/stop
      * Parameters:
@@ -43,7 +39,7 @@ function TimerPage() {
                 // Check if there are still seconds and reduce if true
                 if(seconds > 0) dispatch(decreaseSeconds());
                 else if(seconds === 0 && minutes === 0) {
-                    setStarted(false)
+                    dispatch(updateStarted(false));
                 }
                 else {
                     // Reduce Minutes by 1 and reset seconds to 59
@@ -52,8 +48,6 @@ function TimerPage() {
                 }
             }, 1000); //End Interval
         }
-        // Check if there is still time left, if so set started to false
-        // else if(seconds === 0 && minutes === 0) setStarted(false);
         //Clear Interval
         return () => clearInterval(interval);
     }, [started, minutes, seconds, dispatch]); // End useEffect()
@@ -233,7 +227,7 @@ function TimerPage() {
                                     style={{width: "75%"}}
                                     variant={started?"danger":"success"}
                                         onClick={
-                                            () => started?setStarted(false):setStarted(true)
+                                            () => started?dispatch(updateStarted(false)):dispatch(updateStarted(true))
                                         }
                                 >
                                     {started?"STOP":"START"}

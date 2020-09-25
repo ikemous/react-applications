@@ -60,6 +60,14 @@ export const updateCounter = (amount: number = 1) => {
 
 //#region timerActions
 
+
+export const updateStarted = (updated: boolean): object => {
+    return {
+        type: "UPDATED_STARTED",
+        payload: updated
+    };
+};
+
 /**
  * updateCounter()
  * Purpose: to Tell The Reducer To Update counter with parameter amount
