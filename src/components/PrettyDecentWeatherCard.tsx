@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Image } from "react-bootstrap";
 import { useSelector, RootStateOrAny } from "react-redux";
 import "./prettyDecentWeatherCard.css";
 
 function PrettyDecentWeatherCard() {
-    
-    const weatherResults = useSelector((state: RootStateOrAny) => state.results);
+
+    const { results } = useSelector((state: RootStateOrAny) => state.weatherState);
+
+    useEffect(() => console.log(results), [results]);
 
     const calculateF = (kelvin: string): string => {
         const convertToInt = parseInt(kelvin);
@@ -14,31 +16,31 @@ function PrettyDecentWeatherCard() {
 
     return (
         <>
-            {weatherResults?(
+            {results?(
                 <>
                     <Card className="weatherIcon">
                         <Image 
                             style={{display:"block", margin:"auto", background:"black"}} 
                             alt="icon for current weather data" 
-                            src={`http://openweathermap.org/img/wn/${weatherResults.weather[0].icon}@2x.png`} 
+                            src={`http://openweathermap.org/img/wn/${results.weather[0].icon}@2x.png`} 
                             roundedCircle
                         />
                         <Card.ImgOverlay>
-                            <Card.Title>{weatherResults.weather[0].main}</Card.Title>
+                            <Card.Title>{results.weather[0].main}</Card.Title>
                         </Card.ImgOverlay>
                     </Card>
                     <Card border="primary" className="weatherInfoCard" style={{margin: "5px"}}>
-                        <Card.Header>{weatherResults.name}, {weatherResults.sys.country}</Card.Header>
+                        <Card.Header>{results.name}, {results.sys.country}</Card.Header>
                         <Card.Body>
-                            <Card.Title>{calculateF(weatherResults.main.temp)} °F</Card.Title>
+                            <Card.Title>{calculateF(results.main.temp)} °F</Card.Title>
                             <Card.Text className="text-left">
-                                High: {calculateF(weatherResults.main.temp_min)} °F
+                                High: {calculateF(results.main.temp_min)} °F
                             </Card.Text>
                             <Card.Text className="text-left">
-                                Low: {calculateF(weatherResults.main.temp_max)} °F
+                                Low: {calculateF(results.main.temp_max)} °F
                             </Card.Text>
                             <Card.Text className="text-left">
-                                Wind Speed: {weatherResults.wind.speed} mph
+                                Wind Speed: {results.wind.speed} mph
                             </Card.Text>
                         </Card.Body>
                     </Card>
