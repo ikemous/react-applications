@@ -2,6 +2,7 @@ import React from "react";
 import weatherImage from "../utils/images/weather.jpg";
 import counterImage from "../utils/images/counter.jpg";
 import timerImage from "../utils/images/timer.jpg";
+import { Link } from "react-router-dom"
 import ShowMeTheDate from "../components/ShowMeTheDate";
 import { RootStateOrAny, connect } from "react-redux";
 import { updateDate } from "../utils/actions";
@@ -38,7 +39,7 @@ class HomePage extends React.Component<Props> {
             <Container style={{background: "#376dae", height: "calc(100vh - 56px)"}} fluid>
                 <ShowMeTheDate date={this.props.global.date} />
                 <Carousel style={{height: "70vh"}}>
-                    <Carousel.Item>
+                    <Carousel.Item as={Link} to="/weather">
                         <img
                             className="d-block w-100 slideImage"
                             src={weatherImage}
@@ -49,26 +50,26 @@ class HomePage extends React.Component<Props> {
                         <p>Application To Search And View Current Weather</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item as={Link} to="/counter">
                         <img
                             className="d-block w-100 slideImage"
                             src={counterImage}
                             alt="Counter Application Preview"
                         />
                         <Carousel.Caption>
-                        <h3>Weather Application</h3>
-                        <p>Application To Search And View Current Weather</p>
+                        <h3>Counter Application</h3>
+                        <p>Application Count Up Or Down On Click</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item as={Link} to="/timer">
                         <img
                             className="d-block w-100 slideImage"
                             src={timerImage}
-                            alt="Weather Application Preview"
+                            alt="Timer Application Preview"
                         />
                         <Carousel.Caption>
-                        <h3>Weather Application</h3>
-                        <p>Application To Search And View Current Weather</p>
+                        <h3>Timer Application</h3>
+                        <p>Application To Count Down On Starting Point</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
