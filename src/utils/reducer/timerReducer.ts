@@ -32,6 +32,7 @@ interface TimerAction {
  *      state - updated state or current state
  */
 export const timerReducer = (state: TimerState = {minutes: 15, seconds: 0, started: false}, action: TimerAction) => {
+    // Check Actions
     switch(action.type) {
         // Decrease seconds by payload
         case "DECREASE_SECONDS":
