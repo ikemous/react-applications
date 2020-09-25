@@ -5,6 +5,31 @@ type Action = {
 
 type Time = number;
 
+interface TimerState {     
+    seconds: number,
+    minutes: number
+}
+
+interface TimerAction {
+    type: string,
+    payload: number
+}
+
+export const timerReducer = (state: TimerState = {minutes: 15, seconds: 0}, action: TimerAction) => {
+    switch(action.type) {
+        case "DECREASE_SECONDS":
+            return {...state, seconds: (state.seconds - action.payload)};
+        case "UPDATE_SECONDS":
+            return {...state, seconds: action.payload};
+        case "DECREASE_MINUTES":
+            return {...state, minutes: (state.minutes - 1)};
+        case "UPDATE_MINUTES":
+            return {...state, minutes: action.payload};
+        default:
+            return state;
+    };
+}; // End timerReducer()
+
 /**
  * secondsReducer()
  * Purpose: Update seconds to be stored

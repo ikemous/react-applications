@@ -14,8 +14,9 @@ function TimerPage() {
 
     // const [error, setError] = useState(false);
     const [started, setStarted] = useState(false);
-    const seconds = useSelector((state: RootStateOrAny) => state.seconds);
-    const minutes = useSelector((state: RootStateOrAny) => state.minutes);
+    // const seconds = useSelector((state: RootStateOrAny) => state.seconds);
+    // const minutes = useSelector((state: RootStateOrAny) => state.minutes);
+    const { minutes, seconds } = useSelector((state: RootStateOrAny) => state.timerState);
 
     const dispatch = useDispatch();
 

@@ -1,7 +1,7 @@
 import { passwordReducer } from "./passwordReducer";
 import { globalStateReducer } from "./pageReducer";
 import { weatherReducer } from "./weatherReducer";
-import { minutesReducer, secondsReducer } from "./timerReducer";
+import { minutesReducer, secondsReducer, timerReducer } from "./timerReducer";
 import { counterReducer, countReducer } from "./counterReducer";
 import { combineReducers } from "redux";
 
@@ -12,7 +12,8 @@ const allReducers = combineReducers({
     seconds: secondsReducer,
     minutes: minutesReducer,
     global: globalStateReducer,
-    weatherState: weatherReducer
+    weatherState: weatherReducer,
+    timerState: timerReducer
 });
 
 export default allReducers;
