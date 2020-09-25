@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./counterPage.css";
 import { Form, Col, Row, Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
@@ -7,15 +7,13 @@ import { Helmet } from "react-helmet";
 
 function CounterPage() {
 
+    //create state for the page
     const [error, setError] = useState(false);
+    // Grab redux state for counter and count
     const counter = useSelector((state: RootStateOrAny) => state.counter);
     const count = useSelector((state: RootStateOrAny) => state.count);
+    //grab dispatch to alter redux state
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log(`Counter: ${counter}`);
-        console.log(count);
-    }, [counter, count]);
 
     /**
      * handleChange()
