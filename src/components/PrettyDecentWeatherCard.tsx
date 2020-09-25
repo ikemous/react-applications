@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, Image } from "react-bootstrap";
 import { useSelector, RootStateOrAny } from "react-redux";
 import "./prettyDecentWeatherCard.css";
@@ -11,8 +11,6 @@ function PrettyDecentWeatherCard() {
         const convertToInt = parseInt(kelvin);
         return ((convertToInt - 273.15) * 9/5 + 32).toFixed();
     };
-
-    useEffect(() => console.log(weatherResults), [weatherResults]);
 
     return (
         <>
