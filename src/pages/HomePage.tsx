@@ -22,12 +22,10 @@ class HomePage extends React.Component<Props> {
     };
 
     componentWillMount() {        
-        console.log(this.props);
         this.tick();
     };
 
     componentDidMount() {
-        console.log(this.props);
         setInterval(() => this.tick(), 100);
     };
 

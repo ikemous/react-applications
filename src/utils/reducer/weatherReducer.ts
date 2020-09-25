@@ -8,8 +8,28 @@ type ResultsAction = {
     payload?: any,
 }
 
+interface State {
+    search: string,
+    results: any
+}
+
+interface CombinedActions {
+    type: string,
+    payload: string | any
+}
 type SearchState = string;
 type ResultsState = any;
+
+export const weatherReducer = (state: State, action: CombinedActions) => {
+    switch(action.type) {
+        case "UPDATE_SEARCH":
+            return { ...state, search: action.payload};
+        case "UPDATE_WEATHER_RESULTS":
+            return { ...state, results: action.payload};
+        default:
+            return state;
+    }
+};
 
 /**
  * searchReducer()

@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 interface Location {
     pathname: string,
     search: string
-}
+};
 
 interface Props {
     location: Location,

@@ -9,10 +9,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import allReducers from "./utils/reducer"; 
 
-
-/* eslint-disable no-underscore-dangle */
 const store = createStore(allReducers,composeWithDevTools());
-/* eslint-enable */
 
 ReactDOM.render(
   <React.StrictMode>
