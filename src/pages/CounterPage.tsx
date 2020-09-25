@@ -43,7 +43,7 @@ function CounterPage() {
     }; // End handlechange()
 
     return (
-        <Container style={{minHeight: "calc(100vh - 56px)", textAlign: "center", background: "skyblue"}} fluid>
+        <Container style={{minHeight: "calc(100vh - 56px)", textAlign: "center", background: "#376dae"}} fluid>
                 <div className="d-flex justify-content-center align-items-center" style={{minHeight: "calc(100vh - 56px)"}}>
                     <div style={{width: "100%"}}>
                         <h1 style={{margin: "0", padding: "20px"}}>Counter App</h1>

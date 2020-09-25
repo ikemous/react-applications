@@ -14,8 +14,8 @@ interface Props {
 function CewlNavBar({location}: Props) {
     const currentPath = location.pathname;
     return (
-        <header>
-            <Navbar bg="light" expand="lg">
+        <header style={{background: "#376dae"}}>
+            <Navbar expand="lg">
                 <Navbar.Brand as={Link} to="/">Multication</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

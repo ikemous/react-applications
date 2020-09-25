@@ -1,8 +1,12 @@
 import React from "react";
+import weatherImage from "../utils/images/weather.jpg";
+import counterImage from "../utils/images/counter.jpg";
+import timerImage from "../utils/images/timer.jpg";
 import ShowMeTheDate from "../components/ShowMeTheDate";
 import { RootStateOrAny, connect } from "react-redux";
 import { updateDate } from "../utils/actions";
 import { Carousel, Container } from "react-bootstrap";
+import "./homePage.css";
 
 interface HomePageState {
     date: Date,
@@ -31,19 +35,40 @@ class HomePage extends React.Component<Props> {
 
     render()  {
         return(
-            <Container fluid>
+            <Container style={{background: "#376dae", height: "calc(100vh - 56px)"}} fluid>
                 <ShowMeTheDate date={this.props.global.date} />
-                <Carousel style={{maxHeight: "50vh"}}>
-                    <Carousel.Item style={{height: "inherit"}}>
+                <Carousel style={{height: "70vh"}}>
+                    <Carousel.Item>
                         <img
-                        style={{maxHeight: "50vh"}}
-                            className="d-block w-100"
-                            src="https://via.placeholder.com/200"
-                            alt="First slide"
+                            className="d-block w-100 slideImage"
+                            src={weatherImage}
+                            alt="Weather Application Preview"
                         />
                         <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h3>Weather Application</h3>
+                        <p>Application To Search And View Current Weather</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100 slideImage"
+                            src={counterImage}
+                            alt="Counter Application Preview"
+                        />
+                        <Carousel.Caption>
+                        <h3>Weather Application</h3>
+                        <p>Application To Search And View Current Weather</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-100 slideImage"
+                            src={timerImage}
+                            alt="Weather Application Preview"
+                        />
+                        <Carousel.Caption>
+                        <h3>Weather Application</h3>
+                        <p>Application To Search And View Current Weather</p>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
