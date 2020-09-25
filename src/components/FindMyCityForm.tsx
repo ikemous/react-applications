@@ -8,9 +8,11 @@ interface FindCityForm {
     searchCity: any
 }
 
-function FindMyCityForm({searchCity}: FindCityForm) {
-    const search = useSelector((state: RootStateOrAny) => state.search);
+function FindMyCityForm({ searchCity }: FindCityForm) {
+
+    const { search, error } = useSelector((state: RootStateOrAny) => state.weatherState);
     const dispatch = useDispatch();
+
     return (
         <Form onSubmit={searchCity}>
             <Form.Group  className="searchForm">
@@ -21,7 +23,11 @@ function FindMyCityForm({searchCity}: FindCityForm) {
                     onChange={(event) => dispatch(updateWeatherSearch(event.target.value)) } 
                     id="cityInput" 
                     type="text"
+                    isInvalid={error}
                 />
+                <Form.Control.Feedback type="invalid">
+                    City Wasn't Found Or Typed Incorrectly
+                </Form.Control.Feedback>
                 <Button className="weatherSearchButton" onClick={searchCity}>Search</Button>
             </Form.Group>
         </Form>

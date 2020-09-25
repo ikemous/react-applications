@@ -10,6 +10,7 @@ import { updateDate } from "../utils/actions";
 import { Carousel, Container } from "react-bootstrap";
 import "./homePage.css";
 
+// 
 interface HomePageState {
     date: Date,
     path: string
@@ -23,9 +24,18 @@ interface Props extends HomePageState {
 
 class HomePage extends React.Component<Props> {
 
+    /**
+     * tick()
+     * Purpose: 
+     *      To update the date
+     * Parameters: 
+     *      None
+     * Return: 
+     *      None
+     */
     tick() {
         this.props.dispatch(updateDate());
-    };
+    }; // End tick()
 
     componentWillMount() {        
         this.tick();

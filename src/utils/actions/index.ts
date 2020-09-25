@@ -129,6 +129,22 @@ export const decreaseMinutes = (): object => {
 //#region weatherActions
 
 /**
+ * updateWeatherError()
+ * Purpose: Update Error State with parameter
+ * Parameters:
+ *      error - boolean if error exists or not
+ * return: 
+ *      type - action type of update weather error
+ *      payload - boolean of true or false
+ */
+export const updateWeatherError = (error: boolean) => {
+    return {
+        type: "UPDATE_WEATHER_ERROR",
+        payload: error
+    };
+}; // End updateWeatherError()
+
+/**
  * updateSearch()
  * Purpose: to Tell The Reducer To Update search with parameter value
  * Parameters:

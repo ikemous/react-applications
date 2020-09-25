@@ -10,26 +10,14 @@ type ResultsAction = {
 
 interface State {
     search: string,
-    results: any
+    results: object | null,
+    error: boolean
 }
 
 interface CombinedActions {
     type: string,
     payload: string | any
 }
-type SearchState = string;
-type ResultsState = any;
-
-export const weatherReducer = (state: State, action: CombinedActions) => {
-    switch(action.type) {
-        case "UPDATE_SEARCH":
-            return { ...state, search: action.payload};
-        case "UPDATE_WEATHER_RESULTS":
-            return { ...state, results: action.payload};
-        default:
-            return state;
-    }
-};
 
 /**
  * searchReducer()
@@ -40,36 +28,15 @@ export const weatherReducer = (state: State, action: CombinedActions) => {
  * return: 
  *      state - updated searh or return current state 
  */
-export const weatherSearchReducer = (state:SearchState = "" , action:SearchAction) => {
-    // Check action
+export const weatherReducer = (state: State = {search: "", results: null, error: false}, action: CombinedActions) => {
     switch(action.type) {
-        // Update Search
         case "UPDATE_SEARCH":
-            return state = action.payload
-        // Return Current state
-        default:
-            return state;
-    };
-}; // End searchReducer()
-
-
-/**
- * weatherResultsReducer()
- * Purpose: Update results from the weather search
- * Parameters:
- *      state - object for weather results, default is empty {}
- *      action - object containing a type and payload
- * return: 
- *      state - updated weatherResults or return current state 
- */
-export const weatherResultsReducer = (state:ResultsState = null, action:ResultsAction) => {
-    // Check Action
-    switch(action.type) {
-        // Update Results
+            return { ...state, search: action.payload};
         case "UPDATE_WEATHER_RESULTS":
-            return state = action.payload;
-        // Return Current State
+            return { ...state, results: action.payload};
+        case "UPDATE_WEATHER_ERROR":
+            return {...state, error: action.payload};
         default:
             return state;
     };
-}; // End weatherResultsReducer()
+}; // end weatherReducer()
