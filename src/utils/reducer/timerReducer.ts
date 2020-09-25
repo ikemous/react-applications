@@ -1,20 +1,26 @@
-type Action = {
-    type: string,
-    payload: number
-}
-
-type Time = number;
-
+/**
+ * TimerState interface
+ * Purpose: State store timer information
+ * seconds - number to hold seconds
+ * minutes - number to hold minutes
+ * started - boolean to tell if the timer has started
+ */
 interface TimerState {     
     seconds: number,
     minutes: number,
     started: boolean
-}
+} // End interface TimerState
 
+/**
+ * TimerAction interface
+ * Purpose: Interface to store action information
+ * type: string to tell what action is happening
+ * payload: number or boolean to updated the state with
+ */
 interface TimerAction {
     type: string,
     payload: any | number
-}
+} // End interface TimerAction
 
 /**
  * timerReducer()
