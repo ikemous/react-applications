@@ -1,28 +1,33 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+import { Link, withRouter } from "react-router-dom";
 
-function CewlNavBar() {
+interface Location {
+    pathname: string,
+    search: string
+}
+
+interface Props {
+    location: Location,
+};
+
+function CewlNavBar({location}: Props) {
+    const currentPath = location.pathname;
     return (
         <header>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Multication</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                        </NavDropdown>
-                        </Nav>
+                        <Nav.Link as={Link} to="/weather" className={currentPath==="/weather"?"active":""}>Weather</Nav.Link>
+                        <Nav.Link as={Link} to="/counter" className={currentPath==="/counter"?"active":""}>Counter</Nav.Link>
+                        <Nav.Link as={Link} to="/timer" className={currentPath==="/timer"?"active":""}>Timer</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </header>
     );
 };
 
-export default CewlNavBar;
+export default withRouter(CewlNavBar);
