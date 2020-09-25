@@ -149,87 +149,90 @@ function TimerPage() {
 
     return (
         <Container style={{background: "#376dae", minHeight: "calc(100vh - 56px)"}} fluid>
-            <h1 className="text-center">Timer Application</h1>
-            <Row className="d-flex justify-content-center align-items-center text-center">
-                <Form>
-                    <Form.Row style={{marginLeft: "0", marginRight: "0"}}>
-                        <Col xs={6}>
-                            <Form.Group>
+            <Row className="d-flex justify-content-center align-items-center text-center" style={{minHeight: "calc(100vh - 56px)"}}>
+                <div>
+                    <h1 className="text-center">Timer Application</h1>
+                    <Form>
+                        <Form.Row style={{marginLeft: "0", marginRight: "0"}}>
+                            <Col xs={6}>
+                                <Form.Group>
+                                    <Button 
+                                        name="add" 
+                                        className="quickButton" 
+                                        variant="success"
+                                        onClick={handleMinutesClick}
+                                        disabled={started?true:false}
+                                    >
+                                        <i className="fas fa-arrow-up arrows"></i>
+                                    </Button>
+                                    <Form.Control 
+                                        value={minutes} 
+                                        onChange={handleMinuteChange} 
+                                        id="minutes" 
+                                        className="timer" 
+                                        style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00 "}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
+                                        disabled={started?true:false}    
+                                    />
+                                    <Button 
+                                        name="minus"
+                                        className="quickButton" 
+                                        variant="danger"
+                                        onClick={handleMinutesClick}
+                                        disabled={started?true:false}
+                                    >
+                                        <i className="fas fa-arrow-down arrows"></i>
+                                    </Button>
+                                    <Form.Label htmlFor="minutes">Minutes</Form.Label>
+                                </Form.Group>
+                            </Col>
+                            <Col xs={6}>
+                                <Form.Group>
+                                    <Button 
+                                        name="add" 
+                                        className="quickButton"
+                                        variant="success"
+                                        onClick={handleSecondsClick}
+                                        disabled={started?true:false}
+                                    >
+                                        <i className="fas fa-arrow-up arrows"></i>
+                                    </Button>
+                                    <Form.Control 
+                                        value={seconds} 
+                                        onChange={handleSecondsChange} 
+                                        id="seconds" 
+                                        className="timer"
+                                        style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00"}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
+                                        disabled={started?true:false}
+                                    />
+                                    <Button 
+                                        name="minus" 
+                                        className="quickButton"
+                                        variant="danger"
+                                        onClick={handleSecondsClick}
+                                        disabled={started?true:false}
+                                    >
+                                        <i className="fas fa-arrow-down arrows"></i>
+                                    </Button>
+                                    <Form.Label htmlFor="seconds">Seconds</Form.Label>
+                                </Form.Group>
+                            </Col>
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group style={{width: "100%", marginLeft: "0", marginRight: "0"}}>
                                 <Button 
-                                    name="add" 
-                                    className="quickButton" 
-                                    variant="success"
-                                    onClick={handleMinutesClick}
-                                    disabled={started?true:false}
+                                    style={{width: "75%"}}
+                                    variant={started?"danger":"success"}
+                                        onClick={
+                                            () => started?setStarted(false):setStarted(true)
+                                        }
                                 >
-                                    <i className="fas fa-arrow-up arrows"></i>
+                                    {started?"STOP":"START"}
                                 </Button>
-                                <Form.Control 
-                                    value={minutes} 
-                                    onChange={handleMinuteChange} 
-                                    id="minutes" 
-                                    className="timer" 
-                                    style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00 "}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
-                                    disabled={started?true:false}    
-                                />
-                                <Button 
-                                    name="minus"
-                                    className="quickButton" 
-                                    variant="danger"
-                                    onClick={handleMinutesClick}
-                                    disabled={started?true:false}
-                                >
-                                    <i className="fas fa-arrow-down arrows"></i>
-                                </Button>
-                                <Form.Label htmlFor="minutes">Minutes</Form.Label>
                             </Form.Group>
-                        </Col>
-                        <Col xs={6}>
-                            <Form.Group>
-                                <Button 
-                                    name="add" 
-                                    className="quickButton"
-                                    variant="success"
-                                    onClick={handleSecondsClick}
-                                    disabled={started?true:false}
-                                >
-                                    <i className="fas fa-arrow-up arrows"></i>
-                                </Button>
-                                <Form.Control 
-                                    value={seconds} 
-                                    onChange={handleSecondsChange} 
-                                    id="seconds" 
-                                    className="timer"
-                                    style={(started && minutes === 0 && seconds >= 30)? {background:"#FFCC00"}:(started && minutes === 0 && seconds <= 29)?{background:"red"}:{}}
-                                    disabled={started?true:false}
-                                />
-                                <Button 
-                                    name="minus" 
-                                    className="quickButton"
-                                    variant="danger"
-                                    onClick={handleSecondsClick}
-                                    disabled={started?true:false}
-                                >
-                                    <i className="fas fa-arrow-down arrows"></i>
-                                </Button>
-                                <Form.Label htmlFor="seconds">Seconds</Form.Label>
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Form.Group style={{width: "100%", marginLeft: "0", marginRight: "0"}}>
-                            <Button 
-                                style={{width: "75%"}}
-                                variant={started?"danger":"success"}
-                                    onClick={
-                                        () => started?setStarted(false):setStarted(true)
-                                    }
-                            >
-                                {started?"STOP":"START"}
-                            </Button>
-                        </Form.Group>
-                    </Form.Row>
-                </Form>
+                        </Form.Row>
+                    </Form>
+                </div>
+
             </Row>
         </Container>
     );
