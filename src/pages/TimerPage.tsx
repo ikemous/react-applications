@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./timerPage.css";
+import { Helmet } from "react-helmet";
 import { Form, Col, Container, Row, Button } from "react-bootstrap";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux";
 import { 
@@ -8,6 +8,7 @@ import {
     decreaseSeconds, 
     decreaseMinutes 
 } from "../utils/actions";
+import "./timerPage.css";   
 
 function TimerPage() {
 
@@ -148,7 +149,15 @@ function TimerPage() {
     }; // End handleSecondsClick()
 
     return (
-        <Container style={{background: "#376dae", minHeight: "calc(100vh - 56px)"}} fluid>
+        <>
+            <Helmet>
+                <title>Reactications - Timer</title>
+                <meta
+                    name="description"
+                    content="Page to Allow user Set a time and start a countdown timer"
+                />
+            </Helmet>
+            <Container style={{background: "#376dae", minHeight: "calc(100vh - 56px)"}} fluid>
             <Row className="d-flex justify-content-center align-items-center text-center" style={{minHeight: "calc(100vh - 56px)"}}>
                 <div>
                     <h1 className="text-center">Timer Application</h1>
@@ -235,6 +244,7 @@ function TimerPage() {
 
             </Row>
         </Container>
+        </>
     );
 };
 
