@@ -53,8 +53,21 @@ function CounterPage() {
                         <h1 style={{margin: "0", padding: "20px"}}>Counter App</h1>
                         <Row style={{paddingBottom: "20vh"}}>
                             <Col>
-                                <Button variant="success" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(increment(counter))}>+</Button>
-                                <input aria-label="counter" className="inline-item counter" style={count === 0? {color: "black"}: count > 0? {color: "green"}: {color: "red"}} value ={count} disabled/>
+                                <Button 
+                                    variant="success" 
+                                    style={{padding:"15px", fontSize: "2rem"}} 
+                                    className="inline-item" 
+                                    onClick={() => dispatch(increment(counter))}
+                                >
+                                    +
+                                </Button>
+                                <input 
+                                    aria-label="counter" 
+                                    className="inline-item counter" 
+                                    style={count === 0? {color: "black"}: count > 0? {color: "#003c00"}: {color: "#8B0000"}} 
+                                    value ={count} 
+                                    disabled
+                                />
                                 <Button variant="danger" style={{padding:"15px", fontSize: "2rem"}} className="inline-item" onClick={() => dispatch(decrement(counter))}>-</Button>
                             </Col>
                         </Row>
