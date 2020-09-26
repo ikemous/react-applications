@@ -17,6 +17,7 @@
     programmer 😂😂😂😂 Enjoy Using!
 
 [Deployed Application](https://master.dm4of32gdirop.amplifyapp.com)
+
 [Repository](https://github.com/ikemous/react-applications/tree/master)
 
 ## Software
