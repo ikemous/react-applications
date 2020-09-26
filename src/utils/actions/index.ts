@@ -56,6 +56,22 @@ export const updateCounter = (amount: number = 1) => {
     };
 }; // End updateCounter()
 
+/**
+ * updateCounterError()
+ * Purpose: to Tell The Reducer To Update counter error with parameter
+ * Parameters:
+ *      update - boolean of true or false for error
+ * return: 
+ *      type - action type of update counter error
+ *      payload - boolean for true or false on error
+ */
+export const updateCounterError = (updated: boolean):object => {
+    return {
+        type: "UPDATE_COUNTER_ERROR",
+        payload: updated
+    };
+}; // End updateCounterError()
+
 //#endregion counterActions
 
 //#region timerActions

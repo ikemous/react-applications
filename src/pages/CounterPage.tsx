@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./counterPage.css";
 import { Form, Col, Row, Button, Container } from "react-bootstrap";
 import { useSelector, useDispatch, RootStateOrAny } from "react-redux"
-import { increment, decrement, updateCounter } from "../utils/actions";
+import { increment, decrement, updateCounter, updateCounterError } from "../utils/actions";
 import { Helmet } from "react-helmet";
 
 function CounterPage() {
-
-    //create state for the page
-    const [error, setError] = useState(false);
     // Grab redux state for counter and count
-    const counter = useSelector((state: RootStateOrAny) => state.counter);
-    const count = useSelector((state: RootStateOrAny) => state.count);
+    const { counter, count, error } = useSelector((state: RootStateOrAny) => state.counterState);
+
     //grab dispatch to alter redux state
     const dispatch = useDispatch();
 
@@ -28,12 +25,12 @@ function CounterPage() {
         // Check if input is a number, below or equal to 100, and greater than 0
         if (!isNaN(parseInt(event.target.value)) && event.target.value <= 100 && event.target.value >= 0) {
             // Remove Error
-            setError(false);
+            dispatch(updateCounterError(false));
             // Return dispatch to change count state
             return dispatch(updateCounter(parseInt(event.target.value)));
         }
         // Set Error To True
-        setError(true);
+            dispatch(updateCounterError(true));
         // Change Count Back To Default Of 1
         dispatch(updateCounter(1));
         //  Log Error

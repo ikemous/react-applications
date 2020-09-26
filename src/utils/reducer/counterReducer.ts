@@ -7,7 +7,8 @@ type Action = {
 
 interface CounterState {
     count: number,
-    counter: number
+    counter: number,
+    error: boolean,
 };
 
 // Type for counter variables
@@ -17,8 +18,19 @@ type Counter = number;
 const startingCount = 0;
 const startingCounter = 1;
 
-export const counterPageReducer() {
-
+export const counterPageReducer = (state: CounterState = {count: 0, counter: 1, error: false}, action: Action) => {
+    switch(action.type) {
+        case "INCREMENT":
+            return {...state, count: (state.count + action.payload)};
+        case "DECREMENT":
+            return {...state, count: (state.count - action.payload)};
+        case "UPDATE":
+            return {...state, counter: action.payload}
+        case "UPDATE_COUNTER_ERROR":
+            return {...state, error: action.payload};
+        default:
+            return state;
+    };
 };
 
 /**
