@@ -5,12 +5,21 @@ type Action = {
     payload: number
 }
 
+interface CounterState {
+    count: number,
+    counter: number
+};
+
 // Type for counter variables
 type Counter = number;
 
 // Starting values
 const startingCount = 0;
 const startingCounter = 1;
+
+export const counterPageReducer() {
+
+};
 
 /**
  * countReducer()
